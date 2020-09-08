@@ -1,22 +1,23 @@
 package facades;
 
-import entities.RenameMe;
+import entities.Movie;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * Rename Class to a relevant name Add add relevant facade methods
  */
-public class FacadeExample {
+public class MovieFacade {
 
-    private static FacadeExample instance;
+    private static MovieFacade instance;
     private static EntityManagerFactory emf;
     
     //Private Constructor to ensure Singleton
-    private FacadeExample() {}
+    private MovieFacade() {}
     
     
     /**
@@ -24,10 +25,10 @@ public class FacadeExample {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
+    public static MovieFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new FacadeExample();
+            instance = new MovieFacade();
         }
         return instance;
     }
@@ -37,15 +38,25 @@ public class FacadeExample {
     }
     
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
+    public long getMovieCount(){
         EntityManager em = emf.createEntityManager();
         try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
+            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM Movie r").getSingleResult();
             return renameMeCount;
         }finally{  
             em.close();
         }
         
+    }
+    public List<Movie> getAllMovies() {
+        EntityManager em = getEntityManager();
+        try{
+            TypedQuery<Movie> tp = em.createNamedQuery("Movie.getAll",Movie.class);
+            List<Movie> ls = tp.getResultList();
+            return ls;
+        }finally{
+            em.close();
+        }
     }
 
 }
