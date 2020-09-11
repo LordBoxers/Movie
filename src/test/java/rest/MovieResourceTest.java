@@ -14,6 +14,8 @@ import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.is;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -101,4 +103,25 @@ public class MovieResourceTest {
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   
     }
+    
+    //test getAllMovies with Hamcrest
+    @Test
+    public void testGetAllMovies() throws Exception {
+        given().contentType("application/json")
+                .get("/movie/all")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("size()", is(2))
+                .and()
+                .body("title", hasItems("More text","No more text"));
+    }
+    //Test that needs fixing - movie title errors out at 404
+//    @Test
+//    public void testFindByTitle() throws Exception {
+//        given().contentType("application/json")
+//                .get("movie/move/title/Moretext")
+//                .then().assertThat().statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("id", equalTo(r1.getId().longValue()));
+//    }
 }

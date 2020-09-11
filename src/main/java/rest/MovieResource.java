@@ -62,14 +62,14 @@ public class MovieResource {
     }
     
     @GET
-    @Path("movie/{id}")
+    @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public String titleById(@PathParam("id") long id) {
         MovieDTO result = new MovieDTO (FACADE.findById(id)) ;
         return new Gson().toJson(result);
     }
     @GET
-    @Path("movie/title/{title}")
+    @Path("/title/{title}")
     @Produces({MediaType.APPLICATION_JSON})
     public String titleByTitle(@PathParam("title") String title) {
         List<Movie> ls = FACADE.findByTitle(title);

@@ -59,5 +59,6 @@ public class MovieFacadeTest {
     public void testAFacadeMethod() {
         assertEquals(2, facade.getMovieCount(), "Expects two rows in the database");
     }
+    
 
 }
