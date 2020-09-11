@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -59,5 +60,26 @@ public class MovieResource {
         FACADE.populate();
         return "List of movies added";
     }
+    
+    @GET
+    @Path("movie/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String titleById(@PathParam("id") long id) {
+        MovieDTO result = new MovieDTO (FACADE.findById(id)) ;
+        return new Gson().toJson(result);
+    }
+    @GET
+    @Path("movie/title/{title}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String titleByTitle(@PathParam("title") String title) {
+        List<Movie> ls = FACADE.findByTitle(title);
+        List<MovieDTO> lsdto = new ArrayList<MovieDTO>();
+        for (Movie e : ls) {
+            lsdto.add(new MovieDTO(e));
+        }
+        return GSON.toJson(lsdto);
+    }
+    
+    
     
 }
