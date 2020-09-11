@@ -58,5 +58,17 @@ public class MovieFacade {
             em.close();
         }
     }
+    public void populate() {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(new Movie(1982, "Conan the Barbarian", new String[]{"Arnold Schwarzennegger","James Earl Jones", "Sandahl Bergman"}));
+            em.persist(new Movie(1984, "Conan the Destroyer", new String[]{"Arnold Schwarzennegger","Grace Jones", "Wilt Chamberlain"}));
+            em.persist(new Movie(1984, "Terminator", new String[]{"Arnold Schwarzennegger","Michael Biehn", "Linda Hamilton"}));
+            em.getTransaction().commit();
+        }finally {
+            em.close();
+        }
+    }
 
 }

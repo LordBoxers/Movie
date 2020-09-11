@@ -8,6 +8,7 @@ import utils.EMF_Creator;
 import facades.MovieFacade;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -50,4 +51,13 @@ public class MovieResource {
         }
         return GSON.toJson(lsdto);
     }
+    
+    @GET
+    @Path("/populate")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populate() {
+        FACADE.populate();
+        return "List of movies added";
+    }
+    
 }
