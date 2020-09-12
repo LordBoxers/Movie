@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Movie API</h1>
+        <div>
+            <h3>Alle film</h3>
+            <table id="myTable">
+                <tr>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>år</th>
+                    <th>medvirkende</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Terminator</td>
+                    <td>1987</td>
+                    <td>Arnold</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Conan</td>
+                    <td>1978</td>
+                    <td>Arnold</td>
+                </tr>
+            </table>
+            <button>Fetch all movies</button>
+        </div>
+
+        <div>
+            <h3>Specifikke film</h3>
+            <table id="myTable">
+                <tr>
+                    <th>id</th>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th>Titel</th>
+                    <td>Terminator</td>
+                </tr>
+                <tr>
+                    <th>år:</th>
+                    <td>1987</td>
+                </tr>
+                <tr>
+                    <th>Medvirkende</th>
+                    <td>Arnold</td>
+                </tr>
+
+            </table>
+            <form>
+                <input id="inputnum" type="number">
+                <input id="btn" type="submit" value="Fetch by ID">
+            </form>
+        </div>
+    </body>
+</html>
