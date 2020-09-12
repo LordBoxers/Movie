@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="myTable">
+            <tr>
+                <th>id</th>
+                <th>year</th>
+                <th>make</th>
+                <th>model</th>
+                <th>price</th>
+            </tr>
+        </table>
+        <br>
+        <form>
+            <input id="inputtxt" type="number">
+            <input id="btn" type="submit" value="Sortér">
+        </form>
+
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}
+            ];
+
+            function myCreateFunction(a, b) {
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(1);
+                row.insertCell(0).innerHTML = b[a].id;
+                row.insertCell(1).innerHTML = b[a].year;
+                row.insertCell(2).innerHTML = b[a].make;
+                row.insertCell(3).innerHTML = b[a].model;
+                row.insertCell(4).innerHTML = b[a].price;
+            }
+            for (var i = 0; i < cars.length; i++) {
+                myCreateFunction(i, cars);
+            }
+            
+            document.getElementById("btn").addEventListener("click", function() {
+             event.preventDefault()
+             
+             var inputtxt = document.getElementById("inputtxt").innerHTML
+             var filt = cars.filter(x => x.price < inputtxt)
+             cars = filt;
+             for (var i=0; i<cars.length; i++) {
+             myCreateFunction(i, cars);
+             }
+             })
+        </script>
+    </body>
+</html>

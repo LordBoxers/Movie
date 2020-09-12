@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="1">TODO write content</div>
+        <div id="2">write some more content</div>
+        <div id="3">write even more content</div>
+        <button id="b1">skift farve</button>
+        
+        <script>
+            var divCol = document.getElementsByTagName("div")
+            
+                  for (var i=0; i<divCol.length; i++) {
+                      divCol[i].style.backgroundColor="red";
+                  }
+            var butC = document.getElementById("b1").addEventListener("click", function() {
+                document.getElementById("1").style.backgroundColor="blue";
+                document.getElementById("2").style.backgroundColor="white";
+                document.getElementById("3").style.backgroundColor="pink";
+            })
+            
+            
+            
+            
+            
+        </script>
+        
+        
+        
+        
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div id="container">
+            <div>
+                <ul id="list">
+                    <li class="ls" id="e1">punkt 1</li>
+                    <li id="e2">punkt 2</li>
+                    <li id="e3">punkt 3</li>
+                </ul>
+            </div>
+            
+            <form>
+                <input id="insert" type="text" value="Write a name">
+                <input id="submit" type="submit" value="Add to list">
+                <input id="removef" type="submit" value="Remove first">
+                <input id="removel" type="submit" value="Remove Last">
+            </form>
+            
+        </div>
+        <script>
+            
+                var ul = document.getElementById("list")
+                var input = document.getElementById("insert").value
+                
+            document.getElementById("submit").addEventListener("click", function() {
+                event.preventDefault()
+                
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(input))
+                ul.appendChild(li)
+            })
+            document.getElementById("removef").addEventListener("click", function() {
+                event.preventDefault()
+                
+                ul.removeChild(ul.firstChild)
+                
+            })
+            document.getElementById("removel").addEventListener("click", function() {
+                event.preventDefault()
+                
+                ul.removeChild(ul.lastChild);
+                
+            })
+            
+            
+            
+        </script>
+        
+        
+        
+    </body>
+</html>
